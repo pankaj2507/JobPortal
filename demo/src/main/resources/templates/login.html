@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+  <meta charset="UTF-8"/>
+  <title>Login</title>
+</head>
+
+<body>
+<div class="row" style="margin-right:0">
+  <div class="col-md-6 coffee_mug_background">
+    <div class="logo_left mt-3 pt-4 ms-5 pl-5">
+      <h2 class="logo">hotdevjobs <span class="logo_com">.com</span></h2>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="myForm">
+
+      <!-- ✅ FIX: remove th:object, correct field names -->
+      <form th:action="@{/login}" method="post">
+
+        <h1 class="text-center mb-4">Login</h1>
+
+        <div class="form-group mb-3">
+          <input name="username"
+                 placeholder="Email"
+                 type="email"
+                 class="form-control"
+                 required/>
+        </div>
+
+        <div class="form-group mb-4">
+          <input name="password"
+                 placeholder="Password"
+                 type="password"
+                 class="form-control"
+                 required/>
+        </div>
+
+        <button type="submit" class="myBtn">Log in</button>
+
+        <p class="text-center mt-3">
+          Are you a new User?
+          <a th:href="@{/register}" class="color-text">Register Now</a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

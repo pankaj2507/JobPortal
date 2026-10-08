@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Sign Up</title>
+</head>
+
+<body>
+<section class="content hidden-overflow">
+    <div class="row">
+        <div class="col-6 coffee_mug_background">
+            <div class="logo_left mt-3 pt-4 ms-5 pl-5">
+                <h2 class="logo" style="color: white">
+                    hotdevjobs <span class="logo_com">.com</span>
+                </h2>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="top-margin">
+                <div class="d-flex justify-content-center mb-4">
+                    <h1 class="heading_font font-weight-bold">
+                        Create User Account
+                    </h1>
+                </div>
+
+                <div class="myForm">
+                    <form th:action="@{/register/new}"
+                          th:object="${user}"
+                          method="post">
+
+                        <div class="box-body bozero mx2p">
+
+                            <div class="form-group mb-3">
+                                <input th:field="*{email}"
+                                       placeholder="Email"
+                                       type="email"
+                                       class="form-control"
+                                       required/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <input th:field="*{password}"
+                                       placeholder="Password"
+                                       type="password"
+                                       class="form-control"
+                                       required/>
+                            </div>
+
+                            <!-- ✅ FIX: usersType binding -->
+                            <div class="form-group">
+                                <select th:field="*{usersType}" class="form-control" required>
+                                    <option value="">-- Select User Type --</option>
+                                    <option th:each="userType : ${getAllTypes}"
+                                            th:value="${userType}"
+                                            th:text="${userType.userTypeName}">
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="box-footer mt-4">
+                            <button type="submit" class="myBtn py-3 w-100">Save</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
